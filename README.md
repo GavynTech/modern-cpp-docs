@@ -6,7 +6,7 @@ Deep, code-first documentation for modern C++ — covering the language as it ex
 
 ## What this is
 
-This is a modern c++ programing documentation focused on comperhensive code infrastructure to master solutions for c++ 23 
+This is a modern c++ programing documentation focused on comperhensive code infrastructure to master solutions for c++ 23 and all previous standards
 
 ## Coverage
 
