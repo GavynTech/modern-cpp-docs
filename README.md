@@ -14,7 +14,7 @@ This is a modern c++ programing documentation focused on comperhensive code infr
 
 Future phases will expand into the standard library, numbers and strings, containers and ranges, general-purpose utilities, and concurrency.
 
-## Quality bar
+## Quality Infrastucture 
 
 - All content is original writing.
 - Every runnable code sample is compile-checked in CI-style tooling before publishing.
