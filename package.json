@@ -1,0 +1,17 @@
+{
+  "name": "modern-cpp-docs",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Deep, code-first documentation for modern C++ (C++11 through C++23)",
+  "scripts": {
+    "build": "node build.mjs",
+    "check": "node check-samples.mjs",
+    "serve": "python3 -m http.server 8080 -d dist"
+  },
+  "dependencies": {
+    "gray-matter": "^4.0.3",
+    "highlight.js": "^11.11.1",
+    "markdown-it": "^14.1.0"
+  }
+}

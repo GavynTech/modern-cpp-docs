@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{pagetitle}}</title>
+<meta name="description" content="{{description}}">
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/styles.css">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="/">
+      <img src="/assets/logo.svg" alt="" width="30" height="30">
+      <span>Modern C++</span>
+    </a>
+    <nav class="site-nav">
+      <a href="/">Docs</a>
+      <a href="https://github.com/GavynTech/modern-cpp-docs">GitHub</a>
+      <button id="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">&#9681;</button>
+    </nav>
+  </div>
+</header>
+<main>
+  <div class="article">
+    {{breadcrumb}}
+    <h1>{{title}}</h1>
+    <article>
+{{content}}
+    </article>
+    {{next}}
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-cols">
+      <div>
+        <h4>Documentation</h4>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li><a href="/#core-language-features">Core language features</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="https://en.cppreference.com/">cppreference.com</a></li>
+          <li><a href="https://isocpp.org/">ISO C++</a></li>
+          <li><a href="https://godbolt.org/">Compiler Explorer</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Project</h4>
+        <ul>
+          <li><a href="https://github.com/GavynTech/modern-cpp-docs">Source on GitHub</a></li>
+          <li><a href="https://github.com/GavynTech/modern-cpp-docs/issues">Report an issue</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="copyright">&copy; 2026 GavynTech &middot; Modern C++ Documentation. All code samples compile with -std=c++23.</p>
+  </div>
+</footer>
+<script src="/assets/theme.js"></script>
+</body>
+</html>
