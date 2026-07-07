@@ -12,6 +12,8 @@ next:
 
 Every program that stores more than a fixed handful of objects needs a container, and the standard library offers more than a dozen. The right first answer is almost always `std::vector` — a dynamically-sized array that keeps its elements **contiguous**: side by side in one block of memory, no nodes, no pointers between them. That single design decision produces everything this page covers — the speed, the C compatibility, the growth strategy, and the one real hazard (invalidation). The [C++ Core Guidelines](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#slcon2-prefer-using-stl-vector-by-default-unless-you-have-a-reason-to-use-a-different-container) state it as a rule: prefer `vector` unless you have a reason to use a different container.
 
+> Note that a vector is intended for storing object instances. If you're going to store pointers, do not store raw pointers but smart pointers. Otherwise, you need to handle the lifetime management of the pointed object.
+
 ## Why vector is the default
 
 **Iteration is what CPUs are built for.** Walking a vector touches memory in a straight ascending line. Every cache line loaded carries the next several elements with it, and the hardware prefetcher recognizes the pattern and fetches ahead of you. A node-based container turns each step into a pointer chase to an unrelated address; for small elements, an order-of-magnitude difference is normal.
