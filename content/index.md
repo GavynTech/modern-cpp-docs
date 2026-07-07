@@ -51,7 +51,7 @@ Working with data's two most common shapes: numeric types and their properties, 
 
 <ul class="doc-list">
   <li><a href="/numbers-strings/numeric-types/">Understanding the various numeric types</a>
-    <p>Fundamental integers and floats, fixed-width aliases, mixed-sign traps, and modern literal syntax.</p></li>
+    <p>Fundamental integers and floats, fixed-width aliases, overflow and underflow at the edges, mixed-sign traps, and modern literal syntax.</p></li>
   <li><a href="/numbers-strings/numeric-limits/">Limits and other properties of numeric types</a>
     <p>std::numeric_limits: min, max, lowest, epsilon, precision digits — and putting each to work correctly.</p></li>
   <li><a href="/numbers-strings/string-types/">Understanding the various character and string types</a>

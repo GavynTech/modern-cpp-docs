@@ -1,6 +1,6 @@
 ---
 title: Understanding the various numeric types
-description: The fundamental integer and floating-point types, fixed-width integers, mixed-sign pitfalls, and modern literal syntax.
+description: The fundamental integer and floating-point types, fixed-width integers, overflow and underflow at the edges, mixed-sign pitfalls, and modern literal syntax.
 section: Numbers and strings
 section_href: /#numbers-and-strings
 next:
@@ -98,6 +98,76 @@ int main() {
 
 Related trap: unsigned *underflow* is well-defined wraparound, which is worse than a crash — `for (std::size_t i = v.size() - 1; i >= 0; --i)` loops forever, because `i >= 0` is always true.
 
+## Overflow and underflow
+
+<span class="std">C++20: two's complement guaranteed, defined conversion wrap</span>
+
+A fixed number of bits means a fixed range, and the range has edges. **Overflow** is asking a type to store a value past its maximum; **underflow** is asking for one past its minimum. (Floating-point borrows the word "underflow" for something unrelated — tiny magnitudes losing precision — so keep the contexts separate.) Since C++20 the representation of signed integers is guaranteed two's complement, so when a wrap happens it happens identically everywhere: the stored value is the requested value *modulo 2ᴺ*, mapped back into the type's range.
+
+Here is a signed `short` — 16 bits, range −32768 to 32767 — at both edges. The top row is the value the code asked to store, the bottom row is the value the bits actually hold. Eight columns around each seam:
+
+**Overflow — past the top**
+
+| Value to store | 32764 | 32765 | 32766 | 32767 | 32768 | 32769 | 32770 | 32771 |
+|---------------:|------:|------:|------:|------:|------:|------:|------:|------:|
+| **Stored value** | 32764 | 32765 | 32766 | 32767 | **-32768** | **-32767** | **-32766** | **-32765** |
+
+**Underflow — past the bottom**
+
+| Value to store | -32765 | -32766 | -32767 | -32768 | -32769 | -32770 | -32771 | -32772 |
+|---------------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
+| **Stored value** | -32765 | -32766 | -32767 | -32768 | **32767** | **32766** | **32765** | **32764** |
+
+The rule generating both tables: subtract or add 2¹⁶ = 65536 until the value fits. 32771 − 65536 = −32765; −32772 + 65536 = 32764.
+
+The same sixteen values again, drawn as nodes — one +1 or −1 step per edge. The doubled arrow is the seam where the bit pattern runs out of room and wraps:
+
+```text
+overflow, stepping up:
+
+32764 ─▶ 32765 ─▶ 32766 ─▶ 32767 ══▶ -32768 ─▶ -32767 ─▶ -32766 ─▶ -32765
+   +1       +1       +1        └─ +1 at the top lands at the bottom
+
+underflow, stepping down:
+
+-32765 ─▶ -32766 ─▶ -32767 ─▶ -32768 ══▶ 32767 ─▶ 32766 ─▶ 32765 ─▶ 32764
+    -1        -1        -1         └─ -1 at the bottom lands at the top
+```
+
+In bits, the overflow seam is ordinary binary addition: 32767 is `0111 1111 1111 1111`; adding 1 carries into the sign bit, giving `1000 0000 0000 0000` — which two's complement reads as −32768. Nothing detects anything; the register simply ran out of room. Watch the code walk both chains:
+
+```cpp run
+#include <print>
+
+int main() {
+    short s = 32764;                             // the overflow side of the chart
+    for (int i = 0; i < 7; ++i) {
+        short next = static_cast<short>(s + 1);
+        std::println("{:6} + 1 -> {:6}", s, next);
+        s = next;
+    }
+    std::println("");
+    s = -32765;                                  // the underflow side
+    for (int i = 0; i < 7; ++i) {
+        short next = static_cast<short>(s - 1);
+        std::println("{:6} - 1 -> {:6}", s, next);
+        s = next;
+    }
+}
+```
+
+Now the fine print, and it matters. This demo is fully defined behavior *because of a technicality*: C++ has no `short` arithmetic. `s + 1` first promotes `s` to `int`, the addition happens in `int` (where 32768 fits comfortably), and the wrap occurs on the **conversion back to `short`** — which C++20 defines as exactly the modulo mapping in the tables (before C++20 it was implementation-defined). But `int` and wider have no bigger type doing their math. There the addition itself exceeds the type, and **signed arithmetic overflow is undefined behavior** — not a wrap, not a crash, but a license for the optimizer to assume it never happens:
+
+```cpp
+int i = std::numeric_limits<int>::max();
+int bad = i + 1;       // undefined behavior: the int addition itself overflows
+
+unsigned u = std::numeric_limits<unsigned>::max();
+unsigned ok = u + 1;   // 0 - unsigned arithmetic is defined to wrap modulo 2^N
+```
+
+Practical consequences: when wrapping is the *point* (hashes, counters, ring buffers), compute in an unsigned type, where wrap is guaranteed. When wrapping is a *hazard*, check before you compute — `std::in_range<short>(value)` from the section above answers "will it fit" without triggering anything. Build with `-fsanitize=undefined` in debug and signed overflow becomes a loud runtime error instead of silence. <span class="std">C++26</span> adds a third option: saturating arithmetic, where `std::add_sat<short>(32767, 1)` clamps to 32767 instead of wrapping.
+
 ## Literals you can read
 
 ```cpp
@@ -120,5 +190,6 @@ The suffix matters with `auto`: `auto x = 1.5f` deduces `float`, no suffix deduc
 - Default to `int` for arithmetic and `double` for real numbers; reach for `std::size_t` when indexing containers.
 - The moment a number crosses a process boundary — disk, network, hardware — switch to `<cstdint>` exact-width types.
 - Never mix signed and unsigned in comparisons or arithmetic; when you must compare across, use `std::cmp_*`.
+- Never rely on signed arithmetic to wrap: at `int` and wider it's undefined behavior. Wrap on purpose in unsigned types; guard against it with `std::in_range` and `-fsanitize=undefined`.
 - Use digit separators on every literal over four digits, and binary literals for masks.
 - Don't use `long`: it's the one type that changes meaning between the platforms you're most likely to target. `int` or `int64_t` say what you mean.
