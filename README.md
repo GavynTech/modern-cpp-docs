@@ -6,11 +6,11 @@ Deep, code-first documentation for modern C++ — covering the language as it ex
 
 ## What this is
 
-This is a modern c++ programing documentation focused on comperhensive code infrastructure to master solutions for c++ 23 and all previous standards
+This is a modern C++ programming documentation focused on comprehensive code infrastructure to master solutions for C++23 and all previous standards.
 
 ## Coverage
 
-**Chapter 1 -- Learning Modern Core Lauguage Features** : type deduction with `auto`, type aliases and alias templates, uniform initialization, non-static member initialization, object alignment, scoped enumerations, `override` and `final`, range-based for loops (including support for your own types), `explicit` and implicit conversions, unnamed namespaces, inline namespaces and symbol versioning, structured bindings, class template argument deduction, and the subscript operator through C++23's multidimensional form.
+**Chapter 1 -- Learning Modern Core Language Features** : type deduction with `auto`, type aliases and alias templates, uniform initialization, non-static member initialization, object alignment, scoped enumerations, `override` and `final`, range-based for loops (including support for your own types), `explicit` and implicit conversions, unnamed namespaces, inline namespaces and symbol versioning, structured bindings, class template argument deduction, and the subscript operator through C++23's multidimensional form.
 
 **Chapter 2 -- Working with Numbers and Strings** : the numeric types and their limits, character and string types across all encodings, Unicode console output, pseudo-random number generation and proper seeding, cooked and raw user-defined literals, raw string literals, a string helpers library, parsing and replacing with regular expressions, `std::string_view`, and the modern formatting stack (`std::format`, `std::print`, and formatters for user-defined types).
 
@@ -18,12 +18,13 @@ This is a modern c++ programing documentation focused on comperhensive code infr
 
 Future phases will expand into containers and ranges, general-purpose utilities, and concurrency.
 
-## Quality Infrastucture 
+## Quality Infrastructure
 
 - All content is original writing.
 - Every runnable code sample is compile-checked in CI-style tooling before publishing.
 - Each feature is labeled with the standard that introduced it and the ones that refined it.
-- Each chapter of this documination was inspired by modern c++ programming cookbook third edition by Marius Bancila I have sythensized all 750 pages and turned it into documentation for deeper understanding.
+- Each chapter of this documentation was inspired by Modern C++ Programming Cookbook, third edition, by Marius Bancila. I have synthesized all 750 pages and turned it into documentation for deeper understanding.
+
 ## Roadmap
 
 | Phase | Focus | Status |
