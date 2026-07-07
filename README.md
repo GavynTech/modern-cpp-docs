@@ -2,7 +2,7 @@
 
 Deep, code-first documentation for modern C++ — covering the language as it exists today, from C++11 through C++23. Every page is built around complete, working examples, and every runnable sample on the site compiles cleanly under `-std=c++23` and links straight into Compiler Explorer so you can run it in one click.
 
-**Live site:** https://gavyntech.github.io/modern-cpp-docs/
+**Live site:** https://moderncppdocumentation.com
 
 ## What this is
 
