@@ -135,6 +135,8 @@ The standard library's working core: the containers that own your data, the algo
 <ul class="doc-list">
   <li><a href="/containers-algorithms-iterators/vector/">Using vector as a default container</a>
     <p>Why contiguous storage wins by default: every way to create one, size vs capacity, adding and removing elements, the invalidation rules, and lending the buffer to C APIs.</p></li>
+  <li><a href="/containers-algorithms-iterators/bitset/">Using bitset for fixed-size sequences of bits</a>
+    <p>Exactly N bits with named operations: building bitsets from integers and strings, testing and flipping bits, the bitwise operators, conversions out, and replacing hand-rolled flag masks.</p></li>
 </ul>
 
 ## Coming soon

@@ -3,6 +3,9 @@ title: Using vector as a default container
 description: Why contiguous storage makes vector the right first choice - every way to create one, size versus capacity, adding and removing elements, the invalidation rules, and handing the buffer to C APIs.
 section: Standard library containers, algorithms, and iterators
 section_href: /#standard-library-containers-algorithms-and-iterators
+next:
+  title: Using bitset for fixed-size sequences of bits
+  href: /containers-algorithms-iterators/bitset/
 ---
 
 <span class="std">C++11: emplace_back, data, shrink_to_fit</span> <span class="std">C++20: erase_if, constexpr</span> <span class="std">C++23: append_range, insert_range, ranges::to</span>
