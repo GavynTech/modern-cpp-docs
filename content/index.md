@@ -45,9 +45,46 @@ How to write today's C++ at the language level: type deduction, initialization, 
     <p>Writing correct subscript access for your own collections, const and non-const pairs, multidimensional operator[], and deducing this.</p></li>
 </ul>
 
+## Numbers and strings
+
+Working with data's two most common shapes: numeric types and their properties, text in all its encodings, randomness done right, user-defined literals, regular expressions, and the modern formatting stack.
+
+<ul class="doc-list">
+  <li><a href="/numbers-strings/numeric-types/">Understanding the various numeric types</a>
+    <p>Fundamental integers and floats, fixed-width aliases, mixed-sign traps, and modern literal syntax.</p></li>
+  <li><a href="/numbers-strings/numeric-limits/">Limits and other properties of numeric types</a>
+    <p>std::numeric_limits: min, max, lowest, epsilon, precision digits — and putting each to work correctly.</p></li>
+  <li><a href="/numbers-strings/string-types/">Understanding the various character and string types</a>
+    <p>char through char32_t, five literal encodings, code units vs characters, and which string to actually use.</p></li>
+  <li><a href="/numbers-strings/unicode-output/">Printing Unicode characters to the console</a>
+    <p>Getting UTF-8 from source to terminal intact, platform setup, escapes, and normalization surprises.</p></li>
+  <li><a href="/numbers-strings/random-numbers/">Generating pseudo-random numbers</a>
+    <p>The engine-plus-distribution design of &lt;random&gt;, choosing each, and why rand() is never the answer.</p></li>
+  <li><a href="/numbers-strings/random-seeding/">Properly initializing a pseudo-random number generator</a>
+    <p>random_device, seed_seq, full-state seeding, and treating seeds as reproducibility data.</p></li>
+  <li><a href="/numbers-strings/cooked-literals/">Creating cooked user-defined literals</a>
+    <p>Literal operators that attach units to values — 64_KiB, 90.0_deg — with compile-time validation.</p></li>
+  <li><a href="/numbers-strings/raw-literals/">Creating raw user-defined literals</a>
+    <p>Operators that see the literal's original spelling: exact decimals, other bases, per-digit validation.</p></li>
+  <li><a href="/numbers-strings/raw-strings/">Using raw string literals to avoid escaping characters</a>
+    <p>R"(...)" syntax, custom delimiters, multi-line text, and why every regex belongs in one.</p></li>
+  <li><a href="/numbers-strings/string-helpers/">Creating a library of string helpers</a>
+    <p>trim, case mapping, split, join, replace_all — the missing std::string utilities, built correctly once.</p></li>
+  <li><a href="/numbers-strings/regex-parsing/">Parsing the content of a string using regular expressions</a>
+    <p>regex_match vs regex_search, capture groups, iterating matches, and honest performance guidance.</p></li>
+  <li><a href="/numbers-strings/regex-replacing/">Replacing content of a string using regular expressions</a>
+    <p>regex_replace, backreferences, format flags, and the callback pattern the standard forgot.</p></li>
+  <li><a href="/numbers-strings/string-view/">Using std::string_view instead of constant string references</a>
+    <p>The non-owning parameter type, allocation-free parsing, and the lifetime rules that keep it safe.</p></li>
+  <li><a href="/numbers-strings/format-print/">Formatting and printing text with std::format and std::print</a>
+    <p>The {} mini-language, compile-time checked format strings, and C++23's print family.</p></li>
+  <li><a href="/numbers-strings/format-udt/">Using std::format with user-defined types</a>
+    <p>Specializing std::formatter: the delegation shortcut, custom specs, and range formatting.</p></li>
+</ul>
+
 ## Coming soon
 
-This is phase 1 of the documentation, covering core language features. Future phases will go equally deep on numbers and strings, the standard library containers and algorithms, ranges, general-purpose utilities, and threading and concurrency.
+Phases 1 and 2 cover core language features and working with numbers and strings. Future phases will go equally deep on the standard library containers and algorithms, ranges, general-purpose utilities, and threading and concurrency.
 
 ## External references
 

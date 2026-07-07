@@ -3,6 +3,9 @@ title: The subscript operator, from operator[] to C++23
 description: Writing correct subscript access for your own collections - const and non-const pairs, multidimensional operator[], and deducing this.
 section: Core language features
 section_href: /#core-language-features
+next:
+  title: Understanding the various numeric types
+  href: /numbers-strings/numeric-types/
 ---
 
 <span class="std">C++23: multidimensional and static operator[], deducing this</span>
