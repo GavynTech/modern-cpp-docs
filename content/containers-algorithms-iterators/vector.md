@@ -20,7 +20,7 @@ Every program that stores more than a fixed handful of objects needs a container
 
 **One allocation, not one per element.** A `std::list<int>` node spends more memory on its two pointers and allocator bookkeeping than on the `int` it stores — and costs an allocator call per element. A vector of a million `int`s is a handful of allocations over its whole lifetime.
 
-**Random access is one add.** `v[i]` is pointer arithmetic, so algorithms that need to jump — binary search, sorting, partitioning — run at full speed.
+**Random access is one add.** `v[i]` is pointer arithmetic, so algorithms that need to jump — binary search, sorting, partitioning — run at full speed. That access is the fastest of any container, and only `std::array` matches it.
 
 **Moving is O(1).** Moving a vector steals three pointers; a million elements change owner without a single element moving. Returning vectors by value is the normal, fast thing to do.
 
