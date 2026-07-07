@@ -10,7 +10,7 @@ This is a modern c++ programing documentation focused on comperhensive code infr
 
 ## Coverage
 
-**Chapter 1 -- Lerning Modern Core Launage Features** : type deduction with `auto`, type aliases and alias templates, uniform initialization, non-static member initialization, object alignment, scoped enumerations, `override` and `final`, range-based for loops (including support for your own types), `explicit` and implicit conversions, unnamed namespaces, inline namespaces and symbol versioning, structured bindings, class template argument deduction, and the subscript operator through C++23's multidimensional form.
+**Chapter 1 -- Learning Modern Core Launage Features** : type deduction with `auto`, type aliases and alias templates, uniform initialization, non-static member initialization, object alignment, scoped enumerations, `override` and `final`, range-based for loops (including support for your own types), `explicit` and implicit conversions, unnamed namespaces, inline namespaces and symbol versioning, structured bindings, class template argument deduction, and the subscript operator through C++23's multidimensional form.
 
 Future phases will expand into the standard library, numbers and strings, containers and ranges, general-purpose utilities, and concurrency.
 
@@ -19,7 +19,7 @@ Future phases will expand into the standard library, numbers and strings, contai
 - All content is original writing.
 - Every runnable code sample is compile-checked in CI-style tooling before publishing.
 - Each feature is labeled with the standard that introduced it and the ones that refined it.
-- Each chapter of this documination was inspired by modern c++ programming cookbook third edition by Marius Bancila I have sythensized all 750 pages and turned it into documination for deeper understanding.
+- Each chapter of this documination was inspired by modern c++ programming cookbook third edition by Marius Bancila I have sythensized all 750 pages and turned it into documentation for deeper understanding.
 ## Roadmap
 
 | Phase | Focus | Status |
