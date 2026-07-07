@@ -82,9 +82,36 @@ Working with data's two most common shapes: numeric types and their properties, 
     <p>Specializing std::formatter: the delegation shortcut, custom specs, and range formatting.</p></li>
 </ul>
 
+## Exploring functions
+
+Everything callable: explicit control of the special member functions, lambdas from first principles through recursion, templates over any number of arguments, fold expressions, and the higher-order patterns — map, fold, composition, uniform invocation — that turn functions into building blocks.
+
+<ul class="doc-list">
+  <li><a href="/functions/default-delete/">Defaulted and deleted functions</a>
+    <p>= default and = delete: restoring suppressed special members, preserving triviality, non-copyable types, and rejecting the wrong overloads.</p></li>
+  <li><a href="/functions/lambdas-algorithms/">Using lambdas with standard algorithms</a>
+    <p>Capture semantics, init captures for move-only state, and the lambda patterns that make the algorithm library click — including C++20 projections.</p></li>
+  <li><a href="/functions/generic-lambdas/">Using generic and template lambdas</a>
+    <p>auto parameters as invisible templates, C++20 template heads on lambdas, constraining parameters with concepts, and forwarding inside a closure.</p></li>
+  <li><a href="/functions/recursive-lambda/">Writing a recursive lambda</a>
+    <p>Why a lambda can't name itself, the std::function and self-passing workarounds, and C++23's deducing this that solves it cleanly.</p></li>
+  <li><a href="/functions/function-templates/">Writing function templates</a>
+    <p>Deduction and what it does to your arguments, non-type parameters, overloading versus specialization, and constraining with concepts.</p></li>
+  <li><a href="/functions/variadic-templates/">Writing a function template with a variable number of arguments</a>
+    <p>Parameter packs, sizeof..., the recursive expansion pattern, if constexpr base cases, and perfect forwarding through a pack.</p></li>
+  <li><a href="/functions/fold-expressions/">Using fold expressions to simplify variadic function templates</a>
+    <p>All four fold forms and their exact expansions, the 32 supported operators, empty-pack rules, and folds that replace whole overload sets.</p></li>
+  <li><a href="/functions/map-fold/">Implementing the higher-order functions map and fold</a>
+    <p>Building map and fold generically with invoke_result and inserters, then their standard names: transform, accumulate, and C++23's fold_left.</p></li>
+  <li><a href="/functions/composing-functions/">Composing functions into a higher-order function</a>
+    <p>A variadic compose() from lambdas, pipeline direction, bind_front and bind_back, and how range adaptors made composition a core idiom.</p></li>
+  <li><a href="/functions/invoke/">Uniformly invoking anything callable</a>
+    <p>std::invoke's unified call rules for functions, members, and functors; member pointers as projections; invoke_r; and the invocation traits.</p></li>
+</ul>
+
 ## Coming soon
 
-Phases 1 and 2 cover core language features and working with numbers and strings. Future phases will go equally deep on the standard library containers and algorithms, ranges, general-purpose utilities, and threading and concurrency.
+Phases 1 through 3 cover core language features, working with numbers and strings, and exploring functions. Future phases will go equally deep on the standard library containers and algorithms, ranges, general-purpose utilities, and threading and concurrency.
 
 ## External references
 

@@ -3,6 +3,9 @@ title: Using std::format with user-defined types
 description: Specializing std::formatter - the delegation shortcut, custom parse specs, and one specialization powering format, print, and ranges.
 section: Numbers and strings
 section_href: /#numbers-and-strings
+next:
+  title: Defaulted and deleted functions
+  href: /functions/default-delete/
 ---
 
 <span class="std">C++20</span> <span class="std">C++23: range formatting</span>

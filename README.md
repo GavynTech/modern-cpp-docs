@@ -14,6 +14,8 @@ This is a modern c++ programing documentation focused on comperhensive code infr
 
 **Chapter 2 -- Working with Numbers and Strings** : the numeric types and their limits, character and string types across all encodings, Unicode console output, pseudo-random number generation and proper seeding, cooked and raw user-defined literals, raw string literals, a string helpers library, parsing and replacing with regular expressions, `std::string_view`, and the modern formatting stack (`std::format`, `std::print`, and formatters for user-defined types).
 
+**Chapter 3 -- Exploring Functions** : defaulted and deleted functions, lambdas with the standard algorithms, generic and template lambdas, recursive lambdas (through C++23's deducing `this`), function templates from deduction to concepts, variadic function templates, fold expressions with all four expansion forms and every supported operator, hand-built implementations of the higher-order functions map and fold, function composition, and uniform invocation of anything callable with `std::invoke`.
+
 Future phases will expand into containers and ranges, general-purpose utilities, and concurrency.
 
 ## Quality Infrastucture 
@@ -28,7 +30,8 @@ Future phases will expand into containers and ranges, general-purpose utilities,
 |-------|-------|--------|
 | 1 | Core language features | Live |
 | 2 | Numbers and strings | Live |
-| 3 | TBD | Planned |
+| 3 | Exploring functions | Live |
+| 4 | TBD | Planned |
 
 ## Feedback
 
