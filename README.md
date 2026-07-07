@@ -12,7 +12,7 @@ This is a modern c++ programing documentation focused on comperhensive code infr
 
 **Chapter 1 -- Learning Modern Core Lauguage Features** : type deduction with `auto`, type aliases and alias templates, uniform initialization, non-static member initialization, object alignment, scoped enumerations, `override` and `final`, range-based for loops (including support for your own types), `explicit` and implicit conversions, unnamed namespaces, inline namespaces and symbol versioning, structured bindings, class template argument deduction, and the subscript operator through C++23's multidimensional form.
 
-**Phase 2 — Numbers and strings** (available now): the numeric types and their limits, character and string types across all encodings, Unicode console output, pseudo-random number generation and proper seeding, cooked and raw user-defined literals, raw string literals, a string helpers library, parsing and replacing with regular expressions, `std::string_view`, and the modern formatting stack (`std::format`, `std::print`, and formatters for user-defined types).
+**Chapter 2 -- Working with Numbers and Strings** : the numeric types and their limits, character and string types across all encodings, Unicode console output, pseudo-random number generation and proper seeding, cooked and raw user-defined literals, raw string literals, a string helpers library, parsing and replacing with regular expressions, `std::string_view`, and the modern formatting stack (`std::format`, `std::print`, and formatters for user-defined types).
 
 Future phases will expand into containers and ranges, general-purpose utilities, and concurrency.
 
