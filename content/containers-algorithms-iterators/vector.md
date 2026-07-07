@@ -22,6 +22,8 @@ Every program that stores more than a fixed handful of objects needs a container
 
 **Moving is O(1).** Moving a vector steals three pointers; a million elements change owner without a single element moving. Returning vectors by value is the normal, fast thing to do.
 
+**No memory management falls on you.** A heap-allocated C array means `new[]`, `delete[]`, and every leak or double-free between them; a vector allocates, reallocates, and releases its storage internally, and its destructor cannot forget.
+
 **It owns a C array.** The elements *are* a C array, reachable through `data()`, so a vector plugs directly into any API that takes a pointer and a length.
 
 The classic objection — "I insert in the middle, so I should use `std::list`" — loses the benchmark almost every time. Before the list can insert cheaply it must *find* the position, and that walk (one cache miss per node) costs more than vector's contiguous shift until elements get very large or counts get enormous. When you believe another container will win, measure it against `vector` first; the upset is rarer than intuition says.
