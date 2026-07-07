@@ -3,6 +3,9 @@ title: Providing metadata to the compiler with attributes
 description: The standard attributes from C++11 to C++23 - nodiscard, deprecated, fallthrough, maybe_unused, likely, no_unique_address, and assume - and how to use each honestly.
 section: Preprocessing and compilation
 section_href: /#preprocessing-and-compilation
+next:
+  title: Using vector as a default container
+  href: /containers-algorithms-iterators/vector/
 ---
 
 <span class="std">C++11</span> <span class="std">C++17: nodiscard, fallthrough, maybe_unused</span> <span class="std">C++20: likely, no_unique_address</span> <span class="std">C++23: assume</span>

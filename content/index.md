@@ -128,9 +128,18 @@ What happens before and during compilation, and how to steer it: conditional com
     <p>Every standard attribute from [[noreturn]] to C++23's [[assume]] - what each is for and how to use it honestly.</p></li>
 </ul>
 
+## Standard library containers, algorithms, and iterators
+
+The standard library's working core: the containers that own your data, the algorithms that transform it, and the iterators that connect the two. This chapter is in progress — pages land as they are finished.
+
+<ul class="doc-list">
+  <li><a href="/containers-algorithms-iterators/vector/">Using vector as a default container</a>
+    <p>Why contiguous storage wins by default: every way to create one, size vs capacity, adding and removing elements, the invalidation rules, and lending the buffer to C APIs.</p></li>
+</ul>
+
 ## Coming soon
 
-Phases 1 through 4 cover core language features, working with numbers and strings, exploring functions, and preprocessing and compilation. Future phases will go equally deep on the standard library containers and algorithms, ranges, general-purpose utilities, and threading and concurrency.
+Phases 1 through 4 cover core language features, working with numbers and strings, exploring functions, and preprocessing and compilation; phase 5 — the standard library's containers, algorithms, and iterators — is underway above. Future phases will go equally deep on ranges, general-purpose utilities, and threading and concurrency.
 
 ## External references
 
