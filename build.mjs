@@ -58,18 +58,20 @@ function godboltLink(source) {
 const layout = readFileSync(join(ROOT, 'templates', 'layout.html'), 'utf8');
 
 function renderPage(fm, body) {
-  const pageTitle = fm.home ? SITE : `${fm.title} - ${SITE}`;
+  // Frontmatter is plain text; escape it so titles like vector<bool> survive as HTML.
+  const esc = md.utils.escapeHtml;
+  const pageTitle = esc(fm.home ? SITE : `${fm.title} - ${SITE}`);
   const breadcrumb = fm.section
-    ? `<nav class="breadcrumb"><a href="/">Documentation</a> <span>/</span> <a href="${fm.section_href ?? '/'}">${fm.section}</a></nav>`
+    ? `<nav class="breadcrumb"><a href="/">Documentation</a> <span>/</span> <a href="${fm.section_href ?? '/'}">${esc(fm.section)}</a></nav>`
     : '';
   const next = fm.next
-    ? `<p class="next">Next: <a href="${fm.next.href}">${fm.next.title}</a> &rarr;</p>`
+    ? `<p class="next">Next: <a href="${fm.next.href}">${esc(fm.next.title)}</a> &rarr;</p>`
     : '';
   return layout
     .replaceAll('{{pagetitle}}', pageTitle)
-    .replaceAll('{{description}}', fm.description ?? '')
+    .replaceAll('{{description}}', esc(fm.description ?? ''))
     .replaceAll('{{breadcrumb}}', breadcrumb)
-    .replaceAll('{{title}}', fm.title ?? '')
+    .replaceAll('{{title}}', esc(fm.title ?? ''))
     .replaceAll('{{content}}', body)
     .replaceAll('{{next}}', next);
 }

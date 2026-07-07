@@ -137,6 +137,8 @@ The standard library's working core: the containers that own your data, the algo
     <p>Why contiguous storage wins by default: every way to create one, size vs capacity, adding and removing elements, the invalidation rules, and lending the buffer to C APIs.</p></li>
   <li><a href="/containers-algorithms-iterators/bitset/">Using bitset for fixed-size sequences of bits</a>
     <p>Exactly N bits with named operations: building bitsets from integers and strings, testing and flipping bits, the bitwise operators, conversions out, and replacing hand-rolled flag masks.</p></li>
+  <li><a href="/containers-algorithms-iterators/vector-bool/">Using vector&lt;bool&gt; for variable-size sequences of bits</a>
+    <p>The packed vector specialization as a run-time-sized bitset: what the proxy reference changes, spelling bitset's verbs with algorithms, the sieve sized at run time, and when real bools serve better.</p></li>
 </ul>
 
 ## Coming soon

@@ -247,7 +247,7 @@ The default is a starting point, not a law. The honest reasons to move off `vect
 - **Cheap insertion at the front.** `push_front` on a vector doesn't exist for a reason — that's `std::deque`'s opening argument.
 - **Lookup by key dominates.** That's the associative containers' territory, covered later in this chapter.
 
-And one specialization to know about now: `std::vector<bool>` is not a vector of `bool`. It packs elements into bits, `operator[]` returns a proxy object rather than a `bool&`, and `auto b = v[0]` doesn't capture a boolean. It gets its own page later in this chapter.
+And one specialization to know about now: `std::vector<bool>` is not a vector of `bool`. It packs elements into bits, `operator[]` returns a proxy object rather than a `bool&`, and `auto b = v[0]` doesn't capture a boolean. It gets [its own page](/containers-algorithms-iterators/vector-bool/) later in this chapter.
 
 ## Guidelines
 

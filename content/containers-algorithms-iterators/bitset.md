@@ -3,6 +3,9 @@ title: Using bitset for fixed-size sequences of bits
 description: Exactly N bits with named operations - building bitsets from integers and strings, testing and flipping bits, the bitwise operators, conversions out, and replacing hand-rolled flag masks.
 section: Standard library containers, algorithms, and iterators
 section_href: /#standard-library-containers-algorithms-and-iterators
+next:
+  title: Using vector<bool> for variable-size sequences of bits
+  href: /containers-algorithms-iterators/vector-bool/
 ---
 
 <span class="std">C++11: all, to_ullong, hash</span> <span class="std">C++23: constexpr</span>
@@ -68,7 +71,7 @@ int main() {
 }
 ```
 
-On a `const` bitset, `b[i]` returns a plain `bool`, which is why the sample above prints it directly. On a *non-const* bitset it returns `std::bitset<N>::reference`, a proxy object that stands in for the unaddressable bit — so `auto bit = b[1]` on a mutable bitset captures the proxy, not a boolean, and the proxy has no formatter either. The same proxy design returns in `std::vector<bool>`, later in this chapter; here its useful face is the next section's `b[i] = true`.
+On a `const` bitset, `b[i]` returns a plain `bool`, which is why the sample above prints it directly. On a *non-const* bitset it returns `std::bitset<N>::reference`, a proxy object that stands in for the unaddressable bit — so `auto bit = b[1]` on a mutable bitset captures the proxy, not a boolean, and the proxy has no formatter either. The same proxy design returns in [`std::vector<bool>`](/containers-algorithms-iterators/vector-bool/); here its useful face is the next section's `b[i] = true`.
 
 ## Setting, clearing, and flipping
 
@@ -218,7 +221,7 @@ The sieve lives in the executable as 16 precomputed words; `main` only reads it.
 
 ## When bitset isn't the tool
 
-- **The size is a run-time value.** `N` is a template parameter; there is no growing, shrinking, or "about 1000" about it. A bit sequence sized at run time is `std::vector<bool>`'s job — it gets its own page later in this chapter. (Outside the standard, `boost::dynamic_bitset` covers the same ground with more bitset-flavored API.)
+- **The size is a run-time value.** `N` is a template parameter; there is no growing, shrinking, or "about 1000" about it. A bit sequence sized at run time is [`std::vector<bool>`'s job](/containers-algorithms-iterators/vector-bool/) — the next page. (Outside the standard, `boost::dynamic_bitset` covers the same ground with more bitset-flavored API.)
 - **You need iteration or algorithms.** For all its container manners, `bitset` is not a range: no `begin()`, no `end()`, no range-based `for`, no `std::ranges` anything. Walking one is an index loop from `0` to `size()`.
 - **The flags cross a boundary.** A syscall, file format, or hardware register that specifies an integer wants the integer; keep the established masks at that edge, or convert with `to_ullong()` on the way out, and let `bitset` improve the code on the inside.
 
