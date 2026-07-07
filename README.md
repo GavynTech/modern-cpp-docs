@@ -16,6 +16,8 @@ This is a modern C++ programming documentation focused on comprehensive code inf
 
 **Chapter 3 -- Exploring Functions** : defaulted and deleted functions, lambdas with the standard algorithms, generic and template lambdas, recursive lambdas (through C++23's deducing `this`), function templates from deduction to concepts, variadic function templates, fold expressions with all four expansion forms and every supported operator, hand-built implementations of the higher-order functions map and fold, function composition, and uniform invocation of anything callable with `std::invoke`.
 
+**Chapter 4 -- Preprocessing and Compilation** : conditional compilation with the `#if` family (platform, compiler, and feature detection through C++23's `#elifdef`, `__has_include`, and the feature-test macros), the indirection pattern behind reliable stringification and token concatenation, compile-time assertions with `static_assert`, constraining functions and classes with `enable_if` and SFINAE, compile-time branch selection with `if constexpr` and C++23's `if consteval`, and every standard attribute from `[[noreturn]]` to C++23's `[[assume]]`.
+
 Future phases will expand into containers and ranges, general-purpose utilities, and concurrency.
 
 ## Quality Infrastructure
@@ -32,7 +34,8 @@ Future phases will expand into containers and ranges, general-purpose utilities,
 | 1 | Core language features | Live |
 | 2 | Numbers and strings | Live |
 | 3 | Exploring functions | Live |
-| 4 | TBD | Planned |
+| 4 | Preprocessing and compilation | Live |
+| 5 | TBD | Planned |
 
 ## Feedback
 

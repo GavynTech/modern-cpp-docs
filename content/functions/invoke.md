@@ -3,6 +3,9 @@ title: Uniformly invoking anything callable
 description: std::invoke's unified call rules for functions, member pointers, and functors; why projections accept &Type::member; invoke_r; and the invocation traits behind generic code.
 section: Exploring functions
 section_href: /#exploring-functions
+next:
+  title: Conditionally compiling your source code
+  href: /preprocessing-compilation/conditional-compilation/
 ---
 
 <span class="std">C++17: std::invoke, std::apply</span> <span class="std">C++20: constexpr</span> <span class="std">C++23: std::invoke_r</span>

@@ -109,9 +109,28 @@ Everything callable: explicit control of the special member functions, lambdas f
     <p>std::invoke's unified call rules for functions, members, and functors; member pointers as projections; invoke_r; and the invocation traits.</p></li>
 </ul>
 
+## Preprocessing and compilation
+
+What happens before and during compilation, and how to steer it: conditional compilation, the preprocessor's token machinery, assertions the compiler evaluates, templates that filter themselves out of overload resolution, branches selected at compile time, and the metadata attributes that make the compiler catch your callers' mistakes.
+
+<ul class="doc-list">
+  <li><a href="/preprocessing-compilation/conditional-compilation/">Conditionally compiling your source code</a>
+    <p>The #if family, platform and compiler detection, NDEBUG, __has_include, feature-test macros, and C++23's #elifdef.</p></li>
+  <li><a href="/preprocessing-compilation/stringification/">Using the indirection pattern for stringification and concatenation</a>
+    <p>Why # and ## refuse to expand their arguments, the two-level fix, version strings, unique names, and assertion messages.</p></li>
+  <li><a href="/preprocessing-compilation/static-assert/">Performing compile-time assertion checks with static_assert</a>
+    <p>Layout and ABI guards, template preconditions, the dependent-false idiom, and choosing between static_assert, assert, and concepts.</p></li>
+  <li><a href="/preprocessing-compilation/enable-if/">Conditionally compiling classes and functions with enable_if</a>
+    <p>SFINAE from first principles, the placement idioms and the redefinition trap, constraining class templates, and what replaced it all.</p></li>
+  <li><a href="/preprocessing-compilation/constexpr-if/">Selecting branches at compile time with constexpr if</a>
+    <p>The discard rule and its limits, recursion without base cases, different return types per branch, and C++23's if consteval.</p></li>
+  <li><a href="/preprocessing-compilation/attributes/">Providing metadata to the compiler with attributes</a>
+    <p>Every standard attribute from [[noreturn]] to C++23's [[assume]] - what each is for and how to use it honestly.</p></li>
+</ul>
+
 ## Coming soon
 
-Phases 1 through 3 cover core language features, working with numbers and strings, and exploring functions. Future phases will go equally deep on the standard library containers and algorithms, ranges, general-purpose utilities, and threading and concurrency.
+Phases 1 through 4 cover core language features, working with numbers and strings, exploring functions, and preprocessing and compilation. Future phases will go equally deep on the standard library containers and algorithms, ranges, general-purpose utilities, and threading and concurrency.
 
 ## External references
 
