@@ -92,7 +92,7 @@ The zero row is all edge cases, all defined: no power of two is less than or equ
 
 ## Rotations
 
-A shift discards: bits pushed past the end are gone, and zeros arrive to replace them. A *rotation* conserves — `rotl` and `rotr` move every bit around a circle, and whatever falls off one end reappears at the other. The count is a plain `int`, and **every** value of it is defined: counts wrap modulo the width, and a negative count rotates the other way:
+A shift discards: bits pushed past the end are gone, and zeros arrive to replace them. A *rotation* conserves. When you need a circular shift, `std::rotl` rotates left — toward the high end — and `std::rotr` rotates right, and whatever falls off one end reappears at the other. The count is a plain `int`, and **every** value of it is defined: zero is a no-op, counts at or past the width wrap modulo the width, and a negative count rotates the other way:
 
 ```cpp run
 #include <bit>
@@ -100,18 +100,26 @@ A shift discards: bits pushed past the end are gone, and zeros arrive to replace
 #include <print>
 
 int main() {
-    std::uint8_t b{0b1110'0001};
+    std::uint8_t n{0b0011'1100};
 
-    std::println("b           {:#010b}", b);
-    std::println("rotl(b, 3)  {:#010b}", std::rotl(b, 3));
-    std::println("rotr(b, 3)  {:#010b}", std::rotr(b, 3));
-    std::println("rotl(b, -3) {:#010b}", std::rotl(b, -3));  // negative: the other way
-    std::println("rotl(b, 11) {:#010b}", std::rotl(b, 11));  // 11 mod 8 = 3
-    std::println("b << 3      {:#010b}", static_cast<std::uint8_t>(b << 3));
+    std::println("n            {:#010b}", n);
+    std::println("rotl(n, 0)   {:#010b}", std::rotl(n, 0));   // zero: a defined no-op
+    std::println("rotl(n, 1)   {:#010b}", std::rotl(n, 1));
+    std::println("rotl(n, 3)   {:#010b}", std::rotl(n, 3));
+    std::println("rotl(n, 9)   {:#010b}", std::rotl(n, 9));   // 9 mod 8: same as 1
+    std::println("rotl(n, -2)  {:#010b}", std::rotl(n, -2));  // negative: rotates right
+
+    std::println("rotr(n, 0)   {:#010b}", std::rotr(n, 0));
+    std::println("rotr(n, 1)   {:#010b}", std::rotr(n, 1));
+    std::println("rotr(n, 3)   {:#010b}", std::rotr(n, 3));
+    std::println("rotr(n, 9)   {:#010b}", std::rotr(n, 9));   // 9 mod 8: same as 1
+    std::println("rotr(n, -2)  {:#010b}", std::rotr(n, -2));  // negative: rotates left
+
+    std::println("n << 3       {:#010b}", static_cast<std::uint8_t>(n << 3));
 }
 ```
 
-The last two lines are the whole argument: the rotation kept all four set bits, the shift kept one. The definedness matters as much as the conservation. The pre-C++20 idiom `(x << n) | (x >> (32 - n))` is undefined at exactly `n == 0` — a right shift by the full width — so "safe" versions needed masking gymnastics that compilers then pattern-matched back into a `rol` instruction. `std::rotl` says it directly and is correct at every count. Rotations are the R in ARX ciphers (add–rotate–xor, the family ChaCha20 belongs to), the mixing step in hash finalizers, and the cheap way to cycle a fixed-size schedule mask.
+The last line is the whole argument: all ten rotations preserved the popcount — the same four bits, circling — while the shift pushed one off the end. The width comes from the argument's type by deduction, no explicit template argument needed, and that deduced width is what the counts wrap against: 8 here, because `n` is a `std::uint8_t`. The definedness matters as much as the conservation. The pre-C++20 idiom `(x << n) | (x >> (32 - n))` is undefined at exactly `n == 0` — a right shift by the full width — so "safe" versions needed masking gymnastics that compilers then pattern-matched back into a `rol` instruction. `std::rotl` says it directly and is correct at every count. Rotations are the R in ARX ciphers (add–rotate–xor, the family ChaCha20 belongs to), the mixing step in hash finalizers, and the cheap way to cycle a fixed-size schedule mask.
 
 ## Byte order: endian and byteswap
 
