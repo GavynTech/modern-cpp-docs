@@ -74,7 +74,21 @@ Four functions handle the power-of-two questions every allocator, hash table, an
 
 - If you need to find the smallest power of two that is greater than or equal to a given number, use `std::bit_ceil<T>()`.
 - On the other hand, if you need to find the largest power of two that is smaller than or equal to a given number, use `std::bit_floor<T>()`.
-- If you need to determine the smallest number of bits needed to represent a number, use `std::bit_width<T>()`.
+- If you need to determine the smallest number of bits needed to represent a number, use `std::bit_width<T>()`:
+
+```cpp run
+#include <bit>
+#include <iostream>
+
+int main() {
+    // right-anchored, so the literals' 32-bit width doesn't change the answers
+    std::cout << std::bit_width(0u) << '\n';     // 0
+    std::cout << std::bit_width(2u) << '\n';     // 2
+    std::cout << std::bit_width(15u) << '\n';    // 4
+    std::cout << std::bit_width(16u) << '\n';    // 5
+    std::cout << std::bit_width(1000u) << '\n';  // 10
+}
+```
 
 Capacity math is where all four earn their keep — power-of-two capacities turn `index % capacity` into `index & (capacity - 1)`:
 
