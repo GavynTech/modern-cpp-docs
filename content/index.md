@@ -139,6 +139,8 @@ The standard library's working core: the containers that own your data, the algo
     <p>Exactly N bits with named operations: building bitsets from integers and strings, testing and flipping bits, the bitwise operators, conversions out, and replacing hand-rolled flag masks.</p></li>
   <li><a href="/containers-algorithms-iterators/vector-bool/">Using vector&lt;bool&gt; for variable-size sequences of bits</a>
     <p>The packed vector specialization as a run-time-sized bitset: what the proxy reference changes, spelling bitset's verbs with algorithms, the sieve sized at run time, and when real bools serve better.</p></li>
+  <li><a href="/containers-algorithms-iterators/bit-manipulation/">Using the bit manipulation utilities</a>
+    <p>The C++20 &lt;bit&gt; header's integer utilities — page in progress.</p></li>
 </ul>
 
 ## Coming soon

@@ -3,6 +3,9 @@ title: Using vector<bool> for variable-size sequences of bits
 description: The packed vector specialization as a run-time-sized bitset - what the proxy reference changes, spelling bitset's verbs with algorithms, the sieve sized at run time, and when real bools serve better.
 section: Standard library containers, algorithms, and iterators
 section_href: /#standard-library-containers-algorithms-and-iterators
+next:
+  title: Using the bit manipulation utilities
+  href: /containers-algorithms-iterators/bit-manipulation/
 ---
 
 <span class="std">C++11: hash</span> <span class="std">C++20: constexpr</span> <span class="std">C++23: range formatting, append_range</span>
