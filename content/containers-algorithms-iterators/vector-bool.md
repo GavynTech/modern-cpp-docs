@@ -63,6 +63,8 @@ int main() {
 
 With a real vector, `auto x = v[0]` copies the element; here it captures a live proxy, and assigning to it mutates the container — the exact inverse of what the same line does everywhere else. The rules that keep you safe: write `bool b = v[i]` (or `for (bool b : v)`) when you mean a copy, and `auto&&` when you mean to write through. Two more casualties of packing: there is **no `data()` member** — no `bool*` exists, so nothing here can feed a C API — and generic code written for "any `std::vector<T>`" breaks when `T` is `bool` if it takes addresses or `T&` references of elements. That genericity trap is why the committee has regretted specializing the primary `vector` template; as a *deliberately chosen* bit container, though, it does its job well.
 
+> For this reason, however, `std::vector<bool>` does not meet the requirements of a standard container or sequential container, nor does `std::vector<bool>::iterator` meet the requirements of a forward iterator. As a result, this specialization cannot be used in generic code where a vector is expected. On the other hand, being a vector, it has a different interface from that of `std::bitset` and cannot be viewed as a binary representation of a number. There are no direct ways to construct `std::vector<bool>` from a number or string, nor to convert it to a number or string.
+
 ## bitset's verbs, spelled as algorithms
 
 The specialization kept exactly one of bitset's named operations — `flip()` — and none of the rest: no `count`, `any`, `none`, `all`, `set`, `reset`, `test`, `to_string`. But unlike `bitset` it is a real range with real iterators, so the algorithm library provides every one of those verbs:
@@ -128,7 +130,7 @@ This is the container's home ground: a large, growable field of yes/no facts —
 
 - **Two threads, one word.** Distinct elements of every other standard container can be written concurrently without synchronization. Here, neighboring elements share a machine word, so writing `v[i]` and `v[j]` from two threads is a **data race even when `i != j`**. Any concurrent mutation needs external locking — or a different container.
 - **Per-bit access does arithmetic.** Every read is a shift-and-mask, every write a read-modify-write of the containing word. Code dominated by single random accesses can be slower than `vector<char>`; code that scans or bulk-counts usually wins on density. When it matters, measure both.
-- **Random-access, but not contiguous.** The iterators satisfy random access, and C++20's iterator model (which learned to describe proxy references) treats them honestly — but there is no contiguous buffer of `bool` behind them, and code assuming `&*it` is a `bool*` is wrong.
+- **Random-access, but only by C++20's rules.** The classic iterator requirements demand real references, which a proxy cannot be — the formal reason behind the note above: the specialization fails the container requirements, and its iterator isn't even a forward iterator by that book. C++20's iterator concepts learned to describe proxy references and classify these iterators as random access, so ranges algorithms handle them honestly. Under either rulebook there is no contiguous buffer of `bool` behind them, and code assuming `&*it` is a `bool*` is wrong.
 
 ## When something else is the right bit bag
 
