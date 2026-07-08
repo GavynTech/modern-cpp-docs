@@ -95,6 +95,28 @@ int main() {
 
 The zero row is all edge cases, all defined: no power of two is less than or equal to 0, so `bit_floor(0)` is 0; the smallest power of two of all is 1, so `bit_ceil(0)` is 1 — conveniently the capacity an empty table should grow to; representing zero takes no bits, so `bit_width(0)` is 0. The header's one genuine hazard also lives here: `bit_ceil` is **undefined** when the answer doesn't fit the type — `bit_ceil(std::uint8_t{200})` wants 256 — and in a constant expression that undefined behavior turns into a compile error, in the header's honest style. `bit_width` moonlights as integer log2: the highest set bit of nonzero `x` sits at index `bit_width(x) - 1`, and `bit_width(63u) == 6` says a 64-entry table is addressed by six bits. And `has_single_bit` is the alignment validator: every valid alignment is a power of two ([alignment](/core-language/alignment/)), so vetting an `aligned_alloc` argument is one call.
 
+If you need to find whether a number is a power of two, use `std::has_single_bit()`. One printing note when the answer flows through iostreams instead of [`std::print`](/numbers-strings/format-print/): `operator<<` writes a bare `bool` as `1` or `0`, and the `std::boolalpha` manipulator switches it to words — `std::print`'s `{}` needs no such help, which is why the table above said `true` and `false` on its own:
+
+```cpp run
+#include <bit>
+#include <cstdint>
+#include <iostream>
+#include <print>
+
+int main() {
+    std::cout << std::boolalpha;    // switch operator<< from 1/0 to true/false
+
+    std::cout << std::has_single_bit(std::uint8_t{0b0000'0001}) << '\n';  // true: 2^0
+    std::cout << std::has_single_bit(std::uint8_t{0b0000'0100}) << '\n';  // true: 2^2
+    std::cout << std::has_single_bit(std::uint8_t{0b0000'0101}) << '\n';  // false: two bits set
+    std::cout << std::has_single_bit(std::uint8_t{0b0000'0000}) << '\n';  // false: zero isn't one
+
+    std::println("{}", std::has_single_bit(0b0000'0100u));   // print needs no manipulator
+}
+```
+
+The manipulator is sticky — it sets a format flag on the stream that stays until `std::noboolalpha` clears it — so setting it once at the top covers every line.
+
 ## Rotations
 
 A shift discards: bits pushed past the end are gone, and zeros arrive to replace them. A *rotation* conserves. When you need a circular shift, `std::rotl` rotates left — toward the high end — and `std::rotr` rotates right, and whatever falls off one end reappears at the other. The count is a plain `int`, and **every** value of it is defined: zero is a no-op, counts at or past the width wrap modulo the width, and a negative count rotates the other way:
