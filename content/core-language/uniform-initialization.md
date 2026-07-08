@@ -100,6 +100,8 @@ int main() {
 
 The rule: when a brace list's elements can convert to the `initializer_list` element type, that constructor wins, even if another constructor is a better match. So *uniform* initialization has one non-uniform seam — for size-style constructors on list-initializable containers, use parentheses deliberately, and expect readers to notice the difference.
 
+> A braced-init-list is not an expression and does not have a type. Therefore, `decltype` cannot be used on a braced-init-list, and template type deduction cannot deduce the type that matches a braced-init-list.
+
 ## Aggregates and designated initializers
 
 An *aggregate* (roughly: no user-declared constructors, no private non-static data, no virtuals) is initialized member-by-member in declaration order. <span class="std">C++17</span> extends this to base classes, and <span class="std">C++20</span> adds designated initializers, which name the members being set:
