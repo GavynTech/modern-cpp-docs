@@ -70,10 +70,11 @@ The loop runs once per *set* bit, not once per bit — the cost tracks the popco
 
 ## Powers of two
 
-Four functions handle the power-of-two questions every allocator, hash table, and ring buffer asks. `has_single_bit(x)` is the honest name for "is `x` a power of two" — exactly one bit set — and `bit_width(x)` is the number of bits needed to represent the value, an integer log2 plus one for nonzero `x`. The rounding pair:
+Four functions handle the power-of-two questions every allocator, hash table, and ring buffer asks. `has_single_bit(x)` is the honest name for "is `x` a power of two" — exactly one bit set. The other three:
 
 - If you need to find the smallest power of two that is greater than or equal to a given number, use `std::bit_ceil()`.
 - On the other hand, if you need to find the largest power of two that is smaller than or equal to a given number, use `std::bit_floor()`.
+- If you need to determine the smallest number of bits needed to represent a number, use `std::bit_width()`.
 
 Capacity math is where all four earn their keep — power-of-two capacities turn `index % capacity` into `index & (capacity - 1)`:
 
