@@ -29,6 +29,11 @@ int main() {
     std::println("countr_zero  {}", std::countr_zero(b));  // 1 zero from the right
     std::println("countl_zero  {}  countr_one {}", std::countl_zero(b), std::countr_one(b));
 
+    // zeros counted from the left (most significant bit) and from the right
+    for (std::uint8_t n : {0b0000'0000, 0b1111'1111, 0b0001'1010})
+        std::println("{:#010b}   countl_zero {}  countr_zero {}", n,
+                     std::countl_zero(n), std::countr_zero(n));
+
     std::uint32_t wide = b;                                // same value, wider type
     std::println("countl_zero  {} in a uint32_t", std::countl_zero(wide));
 
@@ -37,7 +42,7 @@ int main() {
 }
 ```
 
-Two lessons in the sample. **The width belongs to the type, not the value.** `countl_zero` answers "how many of the type's leading bits are zero," so the same value scores 0 in a `std::uint8_t` and 24 in a `std::uint32_t` — the left-anchored counts move when the type widens; the right-anchored ones don't. When a leading-zero count feeds an algorithm, a fixed-width type keeps the question stable. **Promotion is fenced out.** Arithmetic on small unsigned types produces `int`, so `std::popcount(b << 1)` refuses to compile until the result is cast back to an unsigned type — a classic silently-wrong-answer turned into a loud compile error. And zero, the input that broke the intrinsics, is simply defined: `countl_zero(std::uint8_t{0})` is 8, the full width.
+Two lessons in the sample. **The width belongs to the type, not the value.** `countl_zero` answers "how many of the type's leading bits are zero," so the same value scores 0 in a `std::uint8_t` and 24 in a `std::uint32_t` — the left-anchored counts move when the type widens; the right-anchored ones don't. The all-zeros row makes the sharpest version of the point: `countl_zero(0b0000'0000u)` would print **32**, because that innocent literal is a 32-bit `unsigned int` — the loop's `std::uint8_t` is what makes the answer 8. When a leading-zero count feeds an algorithm, a fixed-width type keeps the question stable. **Promotion is fenced out.** Arithmetic on small unsigned types produces `int`, so `std::popcount(b << 1)` refuses to compile until the result is cast back to an unsigned type — a classic silently-wrong-answer turned into a loud compile error. And the all-zeros input, the one that broke the intrinsics, is simply defined from both ends: the full width, whichever direction you count from.
 
 ## Visiting the set bits
 
