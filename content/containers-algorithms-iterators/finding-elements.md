@@ -36,3 +36,22 @@ int main() {
     if (it != v.cend()) std::cout << *it << '\n';  // prints 2
 }
 ```
+
+- Use `std::find_first_of()` to search a range for the first occurrence of *any* value from a second range; this algorithm returns an iterator to the first element of the searched range that matches one of the candidates:
+
+```cpp run
+#include <algorithm>
+#include <iostream>
+#include <iterator>
+#include <vector>
+
+int main() {
+    std::vector<int> v{13, 1, 5, 3, 2, 8, 1};
+    std::vector<int> candidates{8, 2, 4};
+    auto it = std::find_first_of(v.cbegin(), v.cend(),
+                                 candidates.cbegin(), candidates.cend());
+    if (it != v.cend())
+        std::cout << *it << " at index "
+                  << std::distance(v.cbegin(), it) << '\n';  // prints 2 at index 4
+}
+```
