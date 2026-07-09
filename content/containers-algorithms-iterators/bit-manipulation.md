@@ -245,3 +245,5 @@ The `static_assert` at the top is quietly remarkable: it *proves* the platform's
 - Branch on `std::endian::native` with `if constexpr` and swap with `byteswap` (C++23) — the standard spelling of `htonl` and friends.
 - If you need to reinterpret an object representation of the type `F` as that of a type `T`, then use `std::bit_cast<T, F>()`.
 - Type-pun only with `bit_cast` — same size, trivially copyable, `constexpr` — never with `reinterpret_cast` or a union, which are undefined for this job.
+
+> [Using bitset for fixed-size sequences of bits](/containers-algorithms-iterators/bitset/), to learn about the standard container for handling bit sequences of fixed sizes.
