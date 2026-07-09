@@ -3,6 +3,9 @@ title: Using the bit manipulation utilities
 description: The C++20 <bit> header's integer utilities - counting and visiting set bits, the power-of-two helpers, rotations without undefined edges, endian and byteswap, and type punning with bit_cast.
 section: Standard library containers, algorithms, and iterators
 section_href: /#standard-library-containers-algorithms-and-iterators
+next:
+  title: Finding elements in a range
+  href: /containers-algorithms-iterators/finding-elements/
 ---
 
 <span class="std">C++20: the &lt;bit&gt; header</span> <span class="std">C++23: byteswap</span>
