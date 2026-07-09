@@ -21,3 +21,18 @@ int main() {
     if (it != v.cend()) std::cout << *it << '\n';  // prints 3
 }
 ```
+
+- Use `std::find_if()` to find a value in a range that satisfies a predicate; this algorithm returns an iterator to the first element the predicate returns true for:
+
+```cpp run
+#include <algorithm>
+#include <iostream>
+#include <vector>
+
+int main() {
+    std::vector<int> v{13, 1, 5, 3, 2, 8, 1};
+    auto it = std::find_if(v.cbegin(), v.cend(),
+                           [](int n) { return n % 2 == 0; });  // the first even number
+    if (it != v.cend()) std::cout << *it << '\n';  // prints 2
+}
+```
