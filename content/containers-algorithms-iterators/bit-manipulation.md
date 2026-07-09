@@ -243,4 +243,5 @@ The `static_assert` at the top is quietly remarkable: it *proves* the platform's
 - Size with `bit_ceil`, test with `has_single_bit`, measure with `bit_width` (highest set bit: `bit_width(x) - 1`). The zero cases are defined — `bit_ceil(0) == 1`, `bit_floor(0) == 0`, `bit_width(0) == 0` — but `bit_ceil` is undefined when the result overflows the type.
 - Rotate with `rotl`/`rotr`: every count is defined, and negatives reverse direction. Retire `(x << n) | (x >> (w - n))`, which is undefined at `n == 0`.
 - Branch on `std::endian::native` with `if constexpr` and swap with `byteswap` (C++23) — the standard spelling of `htonl` and friends.
+- If you need to reinterpret an object representation of the type `F` as that of a type `T`, then use `std::bit_cast<T, F>()`.
 - Type-pun only with `bit_cast` — same size, trivially copyable, `constexpr` — never with `reinterpret_cast` or a union, which are undefined for this job.
