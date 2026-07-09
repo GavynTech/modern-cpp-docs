@@ -247,3 +247,5 @@ The `static_assert` at the top is quietly remarkable: it *proves* the platform's
 - Type-pun only with `bit_cast` — same size, trivially copyable, `constexpr` — never with `reinterpret_cast` or a union, which are undefined for this job.
 
 > [Using bitset for fixed-size sequences of bits](/containers-algorithms-iterators/bitset/), to learn about the standard container for handling bit sequences of fixed sizes.
+
+> [Using `vector<bool>` for variable-size sequences of bits](/containers-algorithms-iterators/vector-bool/), to learn about the specialization of `std::vector` for the `bool` type intended for handling bit sequences of variable sizes.
