@@ -97,3 +97,24 @@ int main() {
     std::cout << "min: " << *mn << ", max: " << *mx << '\n';  // prints min: -2, max: 9
 }
 ```
+
+- Use `std::search()` to find the *first* occurrence of a subrange of elements in a range; this algorithm returns an iterator to the first element of the first subrange:
+
+```cpp run
+#include <algorithm>
+#include <iostream>
+#include <iterator>
+#include <vector>
+
+int main() {
+    std::vector<int> v1{1, 1, 0, 1, 0, 1, 0, 1, 1};
+    std::vector<int> v2{1, 0, 1};
+
+    auto it = std::search(v1.cbegin(), v1.cend()
+                          , v2.cbegin(), v2.cend());
+
+    if (it != v1.cend())
+        std::cout << "found at index "
+                  << std::distance(v1.cbegin(), it) << '\n';  // prints found at index 1
+}
+```
