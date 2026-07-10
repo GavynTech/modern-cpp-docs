@@ -238,3 +238,20 @@ int main() {
                   << std::distance(v.cbegin(), it) << '\n';  // prints first element greater than 3 at index 4
 }
 ```
+
+- Use `std::equal_range()` to find the subrange whose values are equal to a specified value; this algorithm returns a pair of iterators defining that subrange, the first one being the iterator `std::lower_bound()` returns and the second the iterator `std::upper_bound()` returns:
+
+```cpp run
+#include <algorithm>
+#include <iostream>
+#include <iterator>
+#include <vector>
+
+int main() {
+    std::vector<int> v{1, 1, 2, 3, 5, 8, 13};
+
+    auto [first, last] = std::equal_range(v.cbegin(), v.cend(), 1);
+    std::cout << std::distance(v.cbegin(), first) << '\n';
+    std::cout << std::distance(v.cbegin(), last) << '\n';
+}
+```
