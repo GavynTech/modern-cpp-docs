@@ -220,3 +220,21 @@ int main() {
                   << std::distance(v.cbegin(), it) << '\n';  // prints first element not less than 3 at index 3
 }
 ```
+
+- Use `std::upper_bound()` to find the first element in a sorted range that is greater than a value; this algorithm returns an iterator to that element:
+
+```cpp run
+#include <algorithm>
+#include <iostream>
+#include <iterator>
+#include <vector>
+
+int main() {
+    std::vector<int> v{1, 1, 2, 3, 5, 8, 13};  // must be sorted
+
+    auto it = std::upper_bound(v.cbegin(), v.cend(), 3);
+    if (it != v.cend())
+        std::cout << "first element greater than 3 at index "
+                  << std::distance(v.cbegin(), it) << '\n';  // prints first element greater than 3 at index 4
+}
+```
