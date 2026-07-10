@@ -202,3 +202,21 @@ int main() {
     std::cout << std::boolalpha << found << '\n';  // prints false
 }
 ```
+
+- Use `std::lower_bound()` to find the first element in a sorted range that is not less than a value; this algorithm returns an iterator to that element:
+
+```cpp run
+#include <algorithm>
+#include <iostream>
+#include <iterator>
+#include <vector>
+
+int main() {
+    std::vector<int> v{1, 1, 2, 3, 5, 8, 13};  // must be sorted
+
+    auto it = std::lower_bound(v.cbegin(), v.cend(), 3);
+    if (it != v.cend())
+        std::cout << "first element not less than 3 at index "
+                  << std::distance(v.cbegin(), it) << '\n';  // prints first element not less than 3 at index 3
+}
+```
