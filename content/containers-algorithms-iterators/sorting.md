@@ -28,7 +28,6 @@ int main() {
 
 ```cpp run
 #include <algorithm>
-#include <functional>
 #include <string>
 #include <vector>
 
@@ -47,12 +46,12 @@ bool operator>(task const& lhs, task const& rhs) {
 
 int main() {
     std::vector<task> v{
-        { 10, "task1" }, { 10, "task4" }, { 10, "task6" },
-        { 25, "task3" }, { 40, "task2" }, { 80, "task5" }
+        { 10, "task1" }, { 40, "task2" }, { 25, "task3" },
+        { 10, "task4" }, { 80, "task5" }, { 10, "task6" }
     };
 
-    std::stable_sort(v.begin(), v.end(), std::greater<task>());
-    // v = { 80, "task5" }, { 40, "task2" }, { 25, "task3" },
-    //     { 10, "task1" }, { 10, "task4" }, { 10, "task6" }
+    std::stable_sort(v.begin(), v.end());
+    // v = { 10, "task1" }, { 10, "task4" }, { 10, "task6" },
+    //     { 25, "task3" }, { 40, "task2" }, { 80, "task5" }
 }
 ```
