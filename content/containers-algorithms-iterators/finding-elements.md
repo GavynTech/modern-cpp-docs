@@ -76,3 +76,24 @@ int main() {
                   << std::distance(v1.cbegin(), it) << '\n';  // prints found at index 5
 }
 ```
+
+- To find the minimum and maximum of elements in a range, we use `std::min_element()` for the minimum, `std::max_element()` for the maximum, and `std::minmax_element()` for both the minimum and the maximum:
+
+```cpp run
+#include <algorithm>
+#include <iostream>
+#include <vector>
+
+int main() {
+    std::vector<int> v{1, 5, -2, 9, 6};
+
+    auto minit = std::min_element(v.cbegin(), v.cend());
+    std::cout << "min: " << *minit << '\n';  // prints min: -2
+
+    auto maxit = std::max_element(v.cbegin(), v.cend());
+    std::cout << "max: " << *maxit << '\n';  // prints max: 9
+
+    auto [mn, mx] = std::minmax_element(v.cbegin(), v.cend());
+    std::cout << "min: " << *mn << ", max: " << *mx << '\n';  // prints min: -2, max: 9
+}
+```
