@@ -160,3 +160,27 @@ int main() {
                   << std::distance(v.cbegin(), it) << '\n';  // prints found at index 4
 }
 ```
+
+- To find two adjacent elements in a range that are equal or satisfy a binary predicate, we use `std::adjacent_find()`; this algorithm returns an iterator to the first of the two elements:
+
+```cpp run
+#include <algorithm>
+#include <iostream>
+#include <iterator>
+#include <vector>
+
+int main() {
+    std::vector<int> v{1, 1, 2, 3, 5, 8, 13};
+
+    auto it = std::adjacent_find(v.cbegin(), v.cend());
+    if (it != v.cend())
+        std::cout << "equal pair at index "
+                  << std::distance(v.cbegin(), it) << '\n';  // prints equal pair at index 0
+
+    auto it2 = std::adjacent_find(v.cbegin(), v.cend()
+                                  , [](int a, int b) { return a + b > 10; });
+    if (it2 != v.cend())
+        std::cout << "pair summing over 10 at index "
+                  << std::distance(v.cbegin(), it2) << '\n';  // prints pair summing over 10 at index 4
+}
+```
