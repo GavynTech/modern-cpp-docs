@@ -118,3 +118,25 @@ int main() {
                   << std::distance(v1.cbegin(), it) << '\n';  // prints found at index 1
 }
 ```
+
+- Use `std::search()` with a *searcher* — a class that implements a searching algorithm and meets some predefined criteria; the standard library provides `std::default_searcher`, `std::boyer_moore_searcher`, and `std::boyer_moore_horspool_searcher` in `<functional>`:
+
+```cpp run
+#include <algorithm>
+#include <functional>
+#include <iostream>
+#include <iterator>
+#include <string>
+
+int main() {
+    std::string text{"trying to find a needle in a haystack"};
+    std::string word{"needle"};
+
+    auto it = std::search(text.cbegin(), text.cend()
+                          , std::boyer_moore_searcher(word.cbegin(), word.cend()));
+
+    if (it != text.cend())
+        std::cout << "found at index "
+                  << std::distance(text.cbegin(), it) << '\n';  // prints found at index 17
+}
+```
