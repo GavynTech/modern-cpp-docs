@@ -140,3 +140,23 @@ int main() {
                   << std::distance(text.cbegin(), it) << '\n';  // prints found at index 17
 }
 ```
+
+- Use `std::search_n()` to search for N consecutive occurrences of a value in a range; this algorithm returns an iterator to the first element of the found sequence:
+
+```cpp run
+#include <algorithm>
+#include <iostream>
+#include <iterator>
+#include <vector>
+
+int main() {
+    std::vector<int> v{0, 1, 1, 0, 1, 1, 1, 0};
+
+    auto it = std::search_n(v.cbegin(), v.cend()
+                            , 3, 1);  // three consecutive 1s
+
+    if (it != v.cend())
+        std::cout << "found at index "
+                  << std::distance(v.cbegin(), it) << '\n';  // prints found at index 4
+}
+```
