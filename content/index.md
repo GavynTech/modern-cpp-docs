@@ -141,7 +141,8 @@ The standard library's working core: the containers that own your data, the algo
     <p>The packed vector specialization as a run-time-sized bitset: what the proxy reference changes, spelling bitset's verbs with algorithms, the sieve sized at run time, and when real bools serve better.</p></li>
   <li><a href="/containers-algorithms-iterators/bit-manipulation/">Using the bit manipulation utilities</a>
     <p>The C++20 &lt;bit&gt; header's integer utilities: counting and visiting set bits, the power-of-two helpers, rotations without undefined edges, endian and byteswap, and type punning with bit_cast.</p></li>
-  <li><a href="/containers-algorithms-iterators/finding-elements/">Finding elements in a range</a></li>
+  <li><a href="/containers-algorithms-iterators/finding-elements/">Finding elements in a range</a>
+    <p>The standard library's search algorithms: find and its predicate variants, locating subranges from either end, searchers for fast substring scans, the min and max element family, and the logarithmic lookups on sorted ranges.</p></li>
   <li><a href="/containers-algorithms-iterators/sorting/">Sorting a range</a>
     <p>Page in progress.</p></li>
 </ul>
