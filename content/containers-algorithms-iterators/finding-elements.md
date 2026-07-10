@@ -119,7 +119,7 @@ int main() {
 }
 ```
 
-- Use `std::search()` with a *searcher* — a class that implements a searching algorithm and meets some predefined criteria; the standard library provides `std::default_searcher`, `std::boyer_moore_searcher`, and `std::boyer_moore_horspool_searcher` in `<functional>`:
+- Use `std::search()` with a *searcher*, a class that implements a searching algorithm and meets some predefined criteria; the standard library provides `std::default_searcher`, `std::boyer_moore_searcher`, and `std::boyer_moore_horspool_searcher` in `<functional>`:
 
 ```cpp run
 #include <algorithm>
