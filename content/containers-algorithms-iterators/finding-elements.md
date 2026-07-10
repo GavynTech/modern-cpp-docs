@@ -184,3 +184,21 @@ int main() {
                   << std::distance(v.cbegin(), it2) << '\n';  // prints pair summing over 10 at index 4
 }
 ```
+
+- To find whether an element exists in a sorted range, we use `std::binary_search()`; this algorithm returns a boolean value to indicate whether it was found or not:
+
+```cpp run
+#include <algorithm>
+#include <iostream>
+#include <vector>
+
+int main() {
+    std::vector<int> v{1, 1, 2, 3, 5, 8, 13};  // must be sorted
+
+    bool found = std::binary_search(v.cbegin(), v.cend(), 8);
+    std::cout << std::boolalpha << found << '\n';  // prints true
+
+    found = std::binary_search(v.cbegin(), v.cend(), 4);
+    std::cout << std::boolalpha << found << '\n';  // prints false
+}
+```
