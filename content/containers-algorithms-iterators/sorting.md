@@ -93,3 +93,21 @@ int main() {
     // vc = {13, 8, 5, 3}
 }
 ```
+
+- Use `std::nth_element()` to rearrange a range so that the element at the given position is the one that would be there if the range were fully sorted; the elements before it are not greater than it and the elements after it are not less, both in unspecified order:
+
+```cpp run
+#include <algorithm>
+#include <functional>
+#include <vector>
+
+int main() {
+    std::vector<int> v{3, 13, 5, 8, 2, 1, 1};
+
+    std::nth_element(v.begin(), v.begin() + 3, v.end());
+    // v = {1, 1, 2, 3, 5, 8, 13}
+
+    std::nth_element(v.begin(), v.begin() + 1, v.end(), std::greater<int>());
+    // v = {13, 8, 3, 5, 1, 2, 1}
+}
+```
