@@ -55,3 +55,21 @@ int main() {
     //     { 25, "task3" }, { 40, "task2" }, { 80, "task5" }
 }
 ```
+
+- Use `std::partial_sort()` to sort only part of a range; the middle iterator marks the end of the sorted part, and the remaining elements are left in an unspecified order:
+
+```cpp run
+#include <algorithm>
+#include <functional>
+#include <vector>
+
+int main() {
+    std::vector<int> v{3, 13, 5, 8, 2, 1, 1};
+
+    std::partial_sort(v.begin(), v.begin() + 4, v.end());
+    // v = {1, 1, 2, 3, ?, ?, ?}
+
+    std::partial_sort(v.begin(), v.begin() + 4, v.end(), std::greater<int>());
+    // v = {13, 8, 5, 3, ?, ?, ?}
+}
+```
