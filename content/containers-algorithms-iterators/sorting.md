@@ -73,3 +73,23 @@ int main() {
     // v = {13, 8, 5, 3, ?, ?, ?}
 }
 ```
+
+- Use `std::partial_sort_copy()` to sort a part of a range by copying the sorted elements to a second range, leaving the original unchanged:
+
+```cpp run
+#include <algorithm>
+#include <functional>
+#include <vector>
+
+int main() {
+    std::vector<int> v{3, 13, 5, 8, 2, 1, 1};
+    std::vector<int> vc(4);
+
+    std::partial_sort_copy(v.begin(), v.end(), vc.begin(), vc.end());
+    // v is unchanged
+    // vc = {1, 1, 2, 3}
+
+    std::partial_sort_copy(v.begin(), v.end(), vc.begin(), vc.end(), std::greater<int>());
+    // vc = {13, 8, 5, 3}
+}
+```
