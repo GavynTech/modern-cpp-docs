@@ -111,3 +111,21 @@ int main() {
     // v = {13, 8, 3, 5, 1, 2, 1}
 }
 ```
+
+- Use `std::is_sorted()` to check whether a range is sorted; by default it checks for ascending order, and an overload takes a comparison function such as `std::greater<int>()`:
+
+```cpp run
+#include <algorithm>
+#include <functional>
+#include <vector>
+
+int main() {
+    std::vector<int> v{1, 1, 2, 3, 5, 8, 13};
+
+    auto sorted = std::is_sorted(v.begin(), v.end());
+    // sorted = true
+
+    sorted = std::is_sorted(v.begin(), v.end(), std::greater<int>());
+    // sorted = false
+}
+```
