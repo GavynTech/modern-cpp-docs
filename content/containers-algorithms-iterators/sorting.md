@@ -129,3 +129,21 @@ int main() {
     // sorted = false
 }
 ```
+
+- Use `std::is_sorted_until()` to find the sorted subrange from the beginning of a range; it returns an iterator one past the end of that subrange:
+
+```cpp run
+#include <algorithm>
+#include <functional>
+#include <iterator>
+#include <vector>
+
+int main() {
+    std::vector<int> v{1, 1, 2, 3, 13, 8, 5};
+
+    auto it = std::is_sorted_until(v.begin(), v.end());
+    auto length = std::distance(v.begin(), it);
+
+    it = std::is_sorted_until(v.begin(), v.end(), std::greater<int>());
+}
+```
