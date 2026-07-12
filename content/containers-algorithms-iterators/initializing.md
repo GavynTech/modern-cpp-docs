@@ -33,3 +33,20 @@ int main() {
     // v = { 42, 42, 42, 42, 42, 0, 0, 0, 0, 0 }
 }
 ```
+
+- Use `std::generate()` to assign a value returned by a function to the elements of a range; the range is defined by the first and last forward iterators, and the function is invoked once for each element in the range:
+
+```cpp run
+#include <algorithm>
+#include <random>
+#include <vector>
+
+int main() {
+    std::random_device rd;
+    std::mt19937 mt(rd());
+    std::uniform_int_distribution<int> dist(1, 10);
+    std::vector<int> v(5);
+
+    std::generate(v.begin(), v.end(), [&]() { return dist(mt); });
+}
+```
