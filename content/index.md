@@ -145,6 +145,8 @@ The standard library's working core: the containers that own your data, the algo
     <p>The standard library's search algorithms: find and its predicate variants, locating subranges from either end, searchers for fast substring scans, the min and max element family, and the logarithmic lookups on sorted ranges.</p></li>
   <li><a href="/containers-algorithms-iterators/sorting/">Sorting a range</a>
     <p>Page in progress.</p></li>
+  <li><a href="/containers-algorithms-iterators/initializing/">Initializing a range</a>
+    <p>Page in progress.</p></li>
 </ul>
 
 ## Coming soon
