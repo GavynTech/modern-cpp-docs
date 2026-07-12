@@ -50,3 +50,18 @@ int main() {
     std::generate(v.begin(), v.end(), [&]() { return dist(mt); });
 }
 ```
+
+- Use `std::generate_n()` to assign the value returned by a function to a number of elements of a range; the range is defined by the first forward iterator and a counter that indicates how many elements should be assigned a value from the function that is invoked for each element:
+
+```cpp run
+#include <algorithm>
+#include <vector>
+
+int main() {
+    std::vector<int> v(5);
+
+    auto i = 0;
+    std::generate_n(v.begin(), v.size(), [&]() { ++i; return i * i; });
+    // v = { 1, 4, 9, 16, 25 }, the squares of 1, 2, 3, 4, 5
+}
+```
