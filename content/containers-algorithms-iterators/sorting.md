@@ -151,3 +151,5 @@ int main() {
 ## How it works
 
 All of the general algorithms take random access iterators as arguments to define the range to be sorted. Some of them also take an output range. They all have overloads: one that requires a comparison function for sorting the elements, and one that does not and uses `operator<` for comparing the elements.
+
+- `std::sort()` modifies the input range so that its elements are sorted according to the default or the specified comparison function; the actual algorithm for sorting is an implementation detail.
