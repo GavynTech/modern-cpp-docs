@@ -147,3 +147,7 @@ int main() {
     it = std::is_sorted_until(v.begin(), v.end(), std::greater<int>());
 }
 ```
+
+## How it works
+
+All of the general algorithms take random access iterators as arguments to define the range to be sorted. Some of them also take an output range. They all have overloads: one that requires a comparison function for sorting the elements, and one that does not and uses `operator<` for comparing the elements.
