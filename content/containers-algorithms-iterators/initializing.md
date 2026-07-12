@@ -65,3 +65,17 @@ int main() {
     // v = { 1, 4, 9, 16, 25 }, the squares of 1, 2, 3, 4, 5
 }
 ```
+
+- Use `std::iota()` to assign sequentially increasing values to the elements of a range; the range is defined by the first and last forward iterators, and the values are incremented using the prefix `operator++` from the initial specified value:
+
+```cpp run
+#include <numeric>
+#include <vector>
+
+int main() {
+    std::vector<int> v(5);
+
+    std::iota(v.begin(), v.end(), 1);
+    // v = { 1, 2, 3, 4, 5 }
+}
+```
