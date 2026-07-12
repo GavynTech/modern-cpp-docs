@@ -19,3 +19,17 @@ int main() {
     // v = { 42, 42, 42, 42, 42 }
 }
 ```
+
+- Use `std::fill_n()` to assign a value to a number of elements in a range; the range begins at the first iterator and contains the specified count of elements:
+
+```cpp run
+#include <algorithm>
+#include <vector>
+
+int main() {
+    std::vector<int> v(10);
+
+    std::fill_n(v.begin(), 5, 42);
+    // v = { 42, 42, 42, 42, 42, 0, 0, 0, 0, 0 }
+}
+```
