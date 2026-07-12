@@ -154,3 +154,4 @@ All of the general algorithms take random access iterators as arguments to defin
 
 - `std::sort()` modifies the input range so that its elements are sorted according to the default or the specified comparison function; the actual algorithm for sorting is an implementation detail.
 - `std::stable_sort()` is similar to `std::sort()`, but it guarantees to preserve the original order of the elements that are equal.
+- `std::partial_sort()` takes three iterator arguments indicating the first, middle, and last elements in a range, where middle can be any element, not just the one at the natural middle position. The result is a partially sorted range so that the first `middle - first` smallest elements from the original range, that is `[first, last)`, are found in the `[first, middle)` subrange, and the rest of the elements are in an unspecified order in the `[middle, last)` subrange.
