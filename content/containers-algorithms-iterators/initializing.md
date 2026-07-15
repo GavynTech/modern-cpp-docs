@@ -121,3 +121,14 @@ std::for_each(
             << static_cast<int>(c.blue) << '\n';
     });
 ```
+
+Although the output of this snippet has 256 lines (one for each point), we can show an excerpt of it:
+
+```text
+255,255,255
+254,254,254
+253,253,253
+...
+1,1,1
+0,0,0
+```
