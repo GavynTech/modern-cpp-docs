@@ -147,6 +147,8 @@ The standard library's working core: the containers that own your data, the algo
     <p>The standard sorting algorithms: sort and its stability-preserving stable_sort, partial sorts in place or into a separate copy, nth_element for selection without a full sort, and the is_sorted checks that report whether and how far a range is ordered.</p></li>
   <li><a href="/containers-algorithms-iterators/initializing/">Initializing a range</a>
     <p>The algorithms that fill a range with values: fill and fill_n for a single value, generate and generate_n for values from a function, iota for consecutive sequences, and a real-life color gradient that puts them to work.</p></li>
+  <li><a href="/containers-algorithms-iterators/set-operations/">Using set operations on a range</a>
+    <p>Page in progress.</p></li>
 </ul>
 
 ## Coming soon

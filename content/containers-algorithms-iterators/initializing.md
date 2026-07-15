@@ -135,7 +135,7 @@ Although the output of this snippet has 256 lines (one for each point), we can s
 
 > [Sorting a range](/containers-algorithms-iterators/sorting/), to learn about the standard algorithms for sorting a range.
 
-> Using set operations on a range, to learn about the standard algorithms for performing intersections or differences of sorted ranges.
+> [Using set operations on a range](/containers-algorithms-iterators/set-operations/), to learn about the standard algorithms for performing intersections or differences of sorted ranges.
 
 > [Finding elements in a range](/containers-algorithms-iterators/finding-elements/), to learn about the standard algorithms for searching through sequences of values.
 
