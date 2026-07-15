@@ -144,9 +144,9 @@ The standard library's working core: the containers that own your data, the algo
   <li><a href="/containers-algorithms-iterators/finding-elements/">Finding elements in a range</a>
     <p>The standard library's search algorithms: find and its predicate variants, locating subranges from either end, searchers for fast substring scans, the min and max element family, and the logarithmic lookups on sorted ranges.</p></li>
   <li><a href="/containers-algorithms-iterators/sorting/">Sorting a range</a>
-    <p>Page in progress.</p></li>
+    <p>The standard sorting algorithms: sort and its stability-preserving stable_sort, partial sorts in place or into a separate copy, nth_element for selection without a full sort, and the is_sorted checks that report whether and how far a range is ordered.</p></li>
   <li><a href="/containers-algorithms-iterators/initializing/">Initializing a range</a>
-    <p>Page in progress.</p></li>
+    <p>The algorithms that fill a range with values: fill and fill_n for a single value, generate and generate_n for values from a function, iota for consecutive sequences, and a real-life color gradient that puts them to work.</p></li>
 </ul>
 
 ## Coming soon
