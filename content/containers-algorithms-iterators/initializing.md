@@ -89,3 +89,7 @@ int main() {
 - `std::iota()` assigns sequentially increasing values to the elements in the range defined by the first and last forward iterators, starting from the specified initial value and incrementing it with the prefix `operator++` for each element. It takes its name from the ⍳ (iota) function of the APL programming language, which generates a sequence of consecutive integers, and unlike the other algorithms on this page it lives in the `<numeric>` header rather than `<algorithm>`.
 
 > STL stands for Standard Template Library. It is a software library designed by Alexander Stepanov and Meng Lee, initially for C++ before the standardization of the C++ language. It was later used to model the C++ Standard Library, providing containers, iterators, algorithms, and functions. It should not be confused with the C++ Standard Library, as these two are distinct entities.
+
+## There is more...
+
+In the examples in the previous documentation, we used integers so they could be easy to follow. However, now we are going to implement some real-life examples for a deeper and better understanding of how these algorithms can be used in real-life scenarios.
