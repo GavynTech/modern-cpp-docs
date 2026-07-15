@@ -93,3 +93,5 @@ int main() {
 ## There is more...
 
 In the examples in the previous documentation, we used integers so they could be easy to follow. However, now we are going to implement some real-life examples for a deeper and better understanding of how these algorithms can be used in real-life scenarios.
+
+Let's consider a function that is given a series of intermediate points representing a gradient. A color object has three values, one each for the red, green, and blue channels. We can model it as follows:
