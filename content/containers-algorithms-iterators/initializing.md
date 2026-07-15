@@ -132,3 +132,13 @@ Although the output of this snippet has 256 lines (one for each point), we can s
 1,1,1
 0,0,0
 ```
+
+> [Sorting a range](/containers-algorithms-iterators/sorting/), to learn about the standard algorithms for sorting a range.
+
+> Using set operations on a range, to learn about the standard algorithms for performing intersections or differences of sorted ranges.
+
+> [Finding elements in a range](/containers-algorithms-iterators/finding-elements/), to learn about the standard algorithms for searching through sequences of values.
+
+> [Generating pseudo-random numbers](/numbers-strings/random-numbers/), in Chapter 2, to understand the proper way of generating pseudo-random numbers in C++.
+
+> [Properly initializing a pseudo-random number generator](/numbers-strings/random-seeding/), in Chapter 2, to learn how to properly initialize random number engines.
