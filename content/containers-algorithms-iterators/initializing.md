@@ -103,3 +103,21 @@ struct color {
     unsigned char blue;
 };
 ```
+
+We can use the function as follows:
+
+```cpp
+color white {255, 255, 255};
+color black {0, 0, 0};
+
+std::vector<color> greyscale = make_gradient(white, black, 256);
+
+std::for_each(
+    greyscale.begin(), greyscale.end(),
+    [](color const& c) {
+        std::cout
+            << static_cast<int>(c.red) << ","
+            << static_cast<int>(c.green) << ","
+            << static_cast<int>(c.blue) << '\n';
+    });
+```
