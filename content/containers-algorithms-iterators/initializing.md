@@ -79,3 +79,8 @@ int main() {
     // v = { 1, 2, 3, 4, 5 }
 }
 ```
+
+## How it works
+
+- `std::fill()` assigns the specified value to every element in the range defined by the first and last forward iterators. It assigns to existing elements rather than inserting new ones, which is why the destination container must already have the proper size.
+- `std::fill_n()` is similar to `std::fill()`, but the range is defined by the first iterator and a count instead of a last iterator, so it assigns the value to the specified number of elements. It returns an iterator one past the last assigned element, or the first iterator if the count is not positive.
