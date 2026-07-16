@@ -33,3 +33,12 @@ std::set_intersection(v1.cbegin(), v1.cend(),
                       std::back_inserter(v3));
 // v3 = {2, 3, 4}
 ```
+
+- Use `std::set_difference()` to compute the difference of two ranges into a third range; the output range will contain elements from the first range that are not present in the second range:
+
+```cpp
+std::set_difference(v1.cbegin(), v1.cend(),
+                    v2.cbegin(), v2.cend(),
+                    std::back_inserter(v3));
+// v3 = {1, 4, 5}
+```
