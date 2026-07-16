@@ -42,3 +42,12 @@ std::set_difference(v1.cbegin(), v1.cend(),
                     std::back_inserter(v3));
 // v3 = {1, 4, 5}
 ```
+
+- Use `std::set_symmetric_difference()` to compute the dual difference of two ranges:
+
+```cpp
+std::set_symmetric_difference(v1.cbegin(), v1.cend(),
+                              v2.cbegin(), v2.cend(),
+                              std::back_inserter(v3));
+// v3 = {1, 3, 4, 5, 6, 8}
+```
