@@ -51,3 +51,17 @@ std::set_symmetric_difference(v1.cbegin(), v1.cend(),
                               std::back_inserter(v3));
 // v3 = {1, 3, 4, 5, 6, 8}
 ```
+
+- Use `std::includes()` to check if one range is a subset of another range, that is, if all its elements are present in the other range:
+
+```cpp
+std::vector<int> v4 {1, 4, 5};
+
+auto i1 = std::includes(v1.cbegin(), v1.cend(),
+                        v2.cbegin(), v2.cend());
+// i1 = false
+
+auto i2 = std::includes(v1.cbegin(), v1.cend(),
+                        v4.cbegin(), v4.cend());
+// i2 = true
+```
