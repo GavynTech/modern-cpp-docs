@@ -75,3 +75,34 @@ auto i2 = std::includes(v1.cbegin(), v1.cend(),
 - They return an iterator past the end of the constructed output range.
 - The input ranges must be sorted, either using `operator<` or the provided comparison function object, depending on the overload that is used.
 - The output range must not overlap the input ranges.
+
+We will demonstrate the way they work with additional examples, using a vector of the POD type `task` from the previous documentation:
+
+```cpp
+struct task {
+    int priority;
+    std::string name;
+};
+
+bool operator<(const task& lhs, const task& rhs) {
+    return lhs.priority < rhs.priority;
+}
+
+std::vector<task> v1 {
+    { 10, "Task 1.1" },
+    { 20, "Task 1.2" },
+    { 20, "Task 1.3" },
+    { 30, "Task 1.4" },
+    { 30, "Task 1.5" },
+    { 50, "Task 1.6" }
+};
+
+std::vector<task> v2 {
+    { 10, "Task 2.1" },
+    { 20, "Task 2.2" },
+    { 20, "Task 2.3" },
+    { 30, "Task 2.4" },
+    { 30, "Task 2.5" },
+    { 50, "Task 2.6" }
+};
+```
