@@ -65,3 +65,13 @@ auto i2 = std::includes(v1.cbegin(), v1.cend(),
                         v4.cbegin(), v4.cend());
 // i2 = true
 ```
+
+## How it works
+
+- They take two input ranges, each defined by a first and last input iterator.
+- They take an output iterator to the output range where the elements are inserted.
+- They have an overload that takes an extra argument representing a comparison binary function object, which must return true if the first argument is less than the second.
+- When a comparison function object is not specified, `operator<` is used.
+- They return an iterator past the end of the constructed output range.
+- The input ranges must be sorted, either using `operator<` or the provided comparison function object, depending on the overload that is used.
+- The output range must not overlap the input ranges.
