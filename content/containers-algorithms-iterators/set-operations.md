@@ -24,3 +24,12 @@ std::merge(v1.cbegin(), v1.cend(),
            std::back_inserter(v3));
 // v3 = {1, 2, 2, 3, 3, 3, 4, 4, 4, 5, 6, 8}
 ```
+
+- Use `std::set_intersection()` to compute the intersection of two ranges into a third range:
+
+```cpp
+std::set_intersection(v1.cbegin(), v1.cend(),
+                      v2.cbegin(), v2.cend(),
+                      std::back_inserter(v3));
+// v3 = {2, 3, 4}
+```
