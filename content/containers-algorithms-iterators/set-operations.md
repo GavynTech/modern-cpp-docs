@@ -8,9 +8,19 @@ The standard library provides several algorithms for set operations and enables 
 
 ```cpp
 #include <algorithm>
+#include <iterator>
 #include <vector>
 
 std::vector<int> v1 {1, 2, 3, 4, 4, 5};
 std::vector<int> v2 {2, 3, 3, 4, 6, 8};
 std::vector<int> v3;
+```
+
+- Use `std::merge()` to merge the content of two ranges into a third one; this is similar to `std::set_union()` except that it copies the entire content of the input ranges into the output one, not just their union:
+
+```cpp
+std::merge(v1.cbegin(), v1.cend(),
+           v2.cbegin(), v2.cend(),
+           std::back_inserter(v3));
+// v3 = {1, 2, 2, 3, 3, 3, 4, 4, 4, 5, 6, 8}
 ```
